@@ -12,7 +12,7 @@
 		"data:import": "node backend/seeder",
 		"data:destroy": "node backend/seeder -d",
 		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend",
-		"aws": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+		"aws": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend && npm run start"
 	},
 	"engines": {
 		"node": "15.3.0",

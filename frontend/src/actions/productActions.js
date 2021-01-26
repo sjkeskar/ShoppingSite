@@ -21,7 +21,7 @@ import {
 	PRODUCT_TOP_SUCCESS,
 	PRODUCT_TOP_FAIL,
 } from "../constants/productConstants";
-
+import { logout } from "./userActions";
 import axios from "axios";
 
 export const lisProducts = (keyword = "", pageNumber = "") => async (

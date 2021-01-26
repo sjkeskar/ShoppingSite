@@ -14,6 +14,7 @@ const ProfileScreen = ({ location, history }) => {
 	const [name, setName] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [message, setMessage] = useState(null);
+
 	const dispatch = useDispatch();
 	const UserDetails = useSelector((state) => state.userDetails);
 	const { loading, error, user } = UserDetails;
@@ -23,11 +24,12 @@ const ProfileScreen = ({ location, history }) => {
 	const { success } = userUpdateProfile;
 	const orderListMy = useSelector((state) => state.orderListMy);
 	const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
+
 	useEffect(() => {
 		if (!userInfo) {
 			history.push("/login");
 		} else {
-			if (!user.name || success) {
+			if (!user || !user.name || success) {
 				dispatch({ type: USER_UPDATE_PROFILE_RESET });
 				dispatch(getUserDetails("profile"));
 				dispatch(listMyOrders());
@@ -37,6 +39,7 @@ const ProfileScreen = ({ location, history }) => {
 			}
 		}
 	}, [history, userInfo, dispatch, user, success]);
+	
 	const submitHandler = (e) => {
 		e.preventDefault();
 		if (password !== confirmPassword) {
@@ -81,7 +84,7 @@ const ProfileScreen = ({ location, history }) => {
 							onChange={(e) => setPassword(e.target.value)}
 						></Form.Control>
 					</Form.Group>
-					<Form.Group controlId="password">
+					<Form.Group controlId="confirmpassword">
 						<Form.Label>Confirm Password</Form.Label>
 						<Form.Control
 							type="password"

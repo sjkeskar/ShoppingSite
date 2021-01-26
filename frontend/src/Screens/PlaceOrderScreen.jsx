@@ -5,6 +5,8 @@ import Message from "../components/Message";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { Link } from "react-router-dom";
 import { createOrder } from "../actions/orderActions";
+import { ORDER_DETAILS_RESET } from "../constants/orderConstants";
+import { USER_DETAIL_RESET } from "../constants/userConstants";
 
 const PlaceOrderScreen = ({ history }) => {
 	const dispatch = useDispatch();
@@ -23,7 +25,7 @@ const PlaceOrderScreen = ({ history }) => {
 		Number(cart.taxPrice)
 	).toFixed(2);
 	const placeOrderHandler = () => {
-		console.log(cart.cartItems)
+		console.log(cart.cartItems);
 		dispatch(
 			createOrder({
 				orderItems: cart.cartItems,
@@ -39,12 +41,14 @@ const PlaceOrderScreen = ({ history }) => {
 	const orderCreate = useSelector((state) => state.orderCreate);
 	const { order, success, error } = orderCreate;
 	useEffect(() => {
-		if (success) {
+		if (success && order) {
 			history.push(`/order/${order._id}`);
+			dispatch({ type: ORDER_DETAILS_RESET });
+			dispatch({ type: USER_DETAIL_RESET });
 		} else {
 			console.log(`Failed to place order`);
 		}
-	}, [history, success, order._id]);
+	}, [history, success, order]);
 	return (
 		<>
 			<CheckoutSteps step1 step2 step3 step4 />

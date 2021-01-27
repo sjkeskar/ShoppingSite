@@ -88,7 +88,7 @@ const OrderScreen = ({ match }) => {
 								{order.shippingAddress.city},{order.shippingAddress.postalCode},
 								{order.shippingAddress.country}
 							</p>
-							{order.isDeliverd ? (
+							{order.isDelivered ? (
 								<Message variant="success">
 									Delivered On {order.deliveredAt}
 								</Message>

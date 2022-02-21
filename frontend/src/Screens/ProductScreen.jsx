@@ -41,6 +41,7 @@ const ProductScreen = ({ history, match }) => {
 			setRating(0);
 			setComment("");
 		}
+		// eslint-disable-next-line
 		if (!product._id || product._id !== match.params.id) {
 			dispatch(lisProductDetails(match.params.id));
 			dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });

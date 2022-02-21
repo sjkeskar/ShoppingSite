@@ -43,11 +43,13 @@ const PlaceOrderScreen = ({ history }) => {
 	useEffect(() => {
 		if (success && order) {
 			history.push(`/order/${order._id}`);
+			// eslint-disable-next-line
 			dispatch({ type: ORDER_DETAILS_RESET });
 			dispatch({ type: USER_DETAIL_RESET });
 		} else {
 			console.log(`Failed to place order`);
 		}
+		// eslint-disable-next-line
 	}, [history, success, order]);
 	return (
 		<>

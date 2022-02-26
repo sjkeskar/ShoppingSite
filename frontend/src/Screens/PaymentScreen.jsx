@@ -28,10 +28,10 @@ const PaymentScreen = ({ history }) => {
 					<Col>
 						<Form.Check
 							type="radio"
-							label="Paypal or Credit Card"
-							id="Paypal"
+							label="Pay on Delivery"
+							id="POD"
 							name="paymentmethod"
-							value="Paypal"
+							value="Pay on Delivery"
 							checked
 							onChange={(e) => setPaymentMethod(e.target.value)}
 						></Form.Check>
